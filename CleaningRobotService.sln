@@ -3,7 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleaningRobotService", "CleaningRobotService\CleaningRobotService.csproj", "{5B4760EC-13D6-4373-8BBD-F5CD7A43C0A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleaningRobotService.Api", "CleaningRobotService\CleaningRobotService.Api.csproj", "{5B4760EC-13D6-4373-8BBD-F5CD7A43C0A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleaningRobotService.Commands", "CleaningRobotService.Commands\CleaningRobotService.Commands.csproj", "{C427F215-750E-48D1-90DB-E91185FCA58D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleaningRobotService.Infrastructure", "CleaningRobotService.Infrastructure\CleaningRobotService.Infrastructure.csproj", "{3B60E854-1799-4F74-BE58-A7359A29C8F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleaningRobotService.Queries", "CleaningRobotService.Queries\CleaningRobotService.Queries.csproj", "{033EA147-5F45-4042-B322-059D4DF30DE9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleaningRobotService.ApiModel", "CleaningRobotService.Model\CleaningRobotService.ApiModel.csproj", "{1FC5BEA9-9072-4892-9F0E-28A8071F4914}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleaningRobotService.DataModel", "CleaningRobotService.DataModel\CleaningRobotService.DataModel.csproj", "{8E7EC89F-DB53-440E-9E58-DA73CD796AC4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +25,26 @@ Global
 		{5B4760EC-13D6-4373-8BBD-F5CD7A43C0A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B4760EC-13D6-4373-8BBD-F5CD7A43C0A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B4760EC-13D6-4373-8BBD-F5CD7A43C0A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C427F215-750E-48D1-90DB-E91185FCA58D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C427F215-750E-48D1-90DB-E91185FCA58D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C427F215-750E-48D1-90DB-E91185FCA58D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C427F215-750E-48D1-90DB-E91185FCA58D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B60E854-1799-4F74-BE58-A7359A29C8F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B60E854-1799-4F74-BE58-A7359A29C8F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B60E854-1799-4F74-BE58-A7359A29C8F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B60E854-1799-4F74-BE58-A7359A29C8F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{033EA147-5F45-4042-B322-059D4DF30DE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{033EA147-5F45-4042-B322-059D4DF30DE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{033EA147-5F45-4042-B322-059D4DF30DE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{033EA147-5F45-4042-B322-059D4DF30DE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FC5BEA9-9072-4892-9F0E-28A8071F4914}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FC5BEA9-9072-4892-9F0E-28A8071F4914}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FC5BEA9-9072-4892-9F0E-28A8071F4914}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FC5BEA9-9072-4892-9F0E-28A8071F4914}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E7EC89F-DB53-440E-9E58-DA73CD796AC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E7EC89F-DB53-440E-9E58-DA73CD796AC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E7EC89F-DB53-440E-9E58-DA73CD796AC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E7EC89F-DB53-440E-9E58-DA73CD796AC4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
