@@ -2,7 +2,8 @@
 
 namespace CleaningRobotService.Commands
 {
-    public interface ICommand<T>{
+    public interface ICommandHandler<T>{
         void Execute(T command);
     }
+
 }

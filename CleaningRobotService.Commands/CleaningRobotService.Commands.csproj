@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CleaningRobotService.Infrastructure\CleaningRobotService.Infrastructure.csproj" />
+    <ProjectReference Include="..\CleaningRobotService.Model\CleaningRobotService.ApiModel.csproj" />
   </ItemGroup>
 
 </Project>
