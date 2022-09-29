@@ -2,22 +2,31 @@
 
 namespace CleaningRobotService.Commands
 {
-    internal static class UniqueCoordinatesVisitedHelper
+    internal class UniqueCoordinatesVisitedCalculations
     {
         private static readonly int chunkSize = 1000;
 
-        public static ParallelLoopResult RunCalculations(UniqueCoordinatesVisitedCommand command)
+        private readonly Calculations calcuations;
+        public UniqueCoordinatesVisitedCalculations()
+        {
+            calcuations = new Calculations();
+        }
+        public IEnumerable<Task> RunCalculations(UniqueCoordinatesVisitedCommand command)
         {
             var totalCommands = command.MoveCommands.Count();
             int totalChunks = totalCommands / chunkSize + 1;
             var commandSegments = SplitCommandIntoSegments(command, totalCommands, totalChunks);
             var chunkCoordinates = SetStartCoordinatesForEachSegment(command, totalChunks, commandSegments);
 
-            var result = Parallel.For(0, totalChunks, (chunkNumber) =>
-            {
-                Calculations.SetUniqueCoordinates(chunkCoordinates[chunkNumber], commandSegments[chunkNumber]);
-            });
-            return result;
+            var tasks = Enumerable.Range(0, totalChunks).Select(chunkNumber =>
+               Task.Run(() => calcuations.SetUniqueCoordinates(chunkCoordinates[chunkNumber], commandSegments[chunkNumber])));
+
+            return tasks;
+        }
+
+        public int GetTotalUniqueCoordinates()
+        {
+            return calcuations.GetTotalUniqueCoordinates();
         }
 
         private static (int x, int y)[] SetStartCoordinatesForEachSegment(UniqueCoordinatesVisitedCommand command, int totalChunks, ArraySegment<(Direction direction, int steps)>[] commandSegments)

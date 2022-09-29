@@ -9,14 +9,11 @@ namespace CleaningRobotService.Controllers
     [Route("tibber-developer-test")]
     public class CleaningRobotController : ControllerBase
     {
-        private readonly ILogger<CleaningRobotController> logger;
         private readonly ICommandHandler<UniqueCoordinatesVisitedCommand, int> command;
         private readonly IQueryHandler<GetUniqueCoordinatesExecutionsQuery, Execution> query;
-        public CleaningRobotController(ILogger<CleaningRobotController> logger, 
-            ICommandHandler<UniqueCoordinatesVisitedCommand, int> command,
+        public CleaningRobotController(ICommandHandler<UniqueCoordinatesVisitedCommand, int> command,
             IQueryHandler<GetUniqueCoordinatesExecutionsQuery, Execution> query)
         {
-            this.logger = logger;
             this.command = command;
             this.query = query;
         }

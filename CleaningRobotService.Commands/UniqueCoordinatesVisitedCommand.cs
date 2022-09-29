@@ -1,5 +1,6 @@
 ﻿using CleaningRobotService.Commands.Repository;
 using CleaningRobotService.Model;
+using System.Diagnostics;
 
 namespace CleaningRobotService.Commands
 {
@@ -19,20 +20,22 @@ namespace CleaningRobotService.Commands
 
         public async Task<int> RunAsync(UniqueCoordinatesVisitedCommand command)
         {
-            var result = UniqueCoordinatesVisitedHelper.RunCalculations(command);
+            var stopWatch = new Stopwatch();
+            stopWatch.Start();
 
-            if (result.IsCompleted)
+            var calculations = new UniqueCoordinatesVisitedCalculations();
+            var calculationTasks = calculations.RunCalculations(command);
+            await Task.WhenAll(calculationTasks);
+
+            stopWatch.Stop();
+
+            return await executionsRepository.AddExecutionAsync(new DataModel.Execution
             {
-                return await executionsRepository.AddExecutionAsync(new DataModel.Execution
-                {
-                    Commands = command.MoveCommands.Length,
-                    Result = Calculations.GetTotalUniqueCoordinates(),
-                    TimeStamp = DateTime.UtcNow,
-                    Duration = 2394
-                });
-            }
-
-            return -1;
+                Commands = command.MoveCommands.Length,
+                Result = calculations.GetTotalUniqueCoordinates(),
+                TimeStamp = DateTime.UtcNow,
+                Duration = stopWatch.Elapsed.TotalMilliseconds
+            });
         }
     }
 
