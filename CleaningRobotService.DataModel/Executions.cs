@@ -1,6 +1,6 @@
 ﻿namespace CleaningRobotService.DataModel
 {
-    public class Executions
+    public class Execution
     {
         public int Id { get; set; }
         public DateTime TimeStamp { get; set; }

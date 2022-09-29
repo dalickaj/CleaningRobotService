@@ -2,8 +2,8 @@
 
 namespace CleaningRobotService.Commands
 {
-    public interface ICommandHandler<T>{
-        void Execute(T command);
+    public interface ICommandHandler<In,Out>{
+        Task<Out> RunAsync(In command);
     }
 
 }
