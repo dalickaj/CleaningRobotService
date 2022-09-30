@@ -82,7 +82,10 @@ namespace CleaningRobotService.Commands
 
             if (alreadyVisited[xSquareIndex, ySquareIndex].TryGetValue(coordinates, out _)) return;
 
-            alreadyVisited[xSquareIndex, ySquareIndex].Add(coordinates);
+            lock (alreadyVisited)
+            {
+                alreadyVisited[xSquareIndex, ySquareIndex].Add(coordinates);
+            }
         }
 
         private static bool IsValidCoordinate((int x, int y) coordinates)

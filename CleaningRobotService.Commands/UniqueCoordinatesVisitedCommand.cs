@@ -27,12 +27,14 @@ namespace CleaningRobotService.Commands
             var calculationTasks = calculations.RunCalculations(command);
             await Task.WhenAll(calculationTasks);
 
+            int result = calculations.GetTotalUniqueCoordinates();
+
             stopWatch.Stop();
 
             return await executionsRepository.AddExecutionAsync(new DataModel.Execution
             {
                 Commands = command.MoveCommands.Length,
-                Result = calculations.GetTotalUniqueCoordinates(),
+                Result = result,
                 TimeStamp = DateTime.UtcNow,
                 Duration = stopWatch.Elapsed.TotalMilliseconds
             });

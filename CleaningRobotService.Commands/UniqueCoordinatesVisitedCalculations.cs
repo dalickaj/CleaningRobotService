@@ -14,7 +14,7 @@ namespace CleaningRobotService.Commands
         public IEnumerable<Task> RunCalculations(UniqueCoordinatesVisitedCommand command)
         {
             var totalCommands = command.MoveCommands.Count();
-            int totalChunks = totalCommands / chunkSize + 1;
+            int totalChunks = totalCommands > chunkSize ? totalCommands/chunkSize : 1;
             var commandSegments = SplitCommandIntoSegments(command, totalCommands, totalChunks);
             var chunkCoordinates = SetStartCoordinatesForEachSegment(command, totalChunks, commandSegments);
 
@@ -36,7 +36,7 @@ namespace CleaningRobotService.Commands
 
             for (int chunkNumber = 1; chunkNumber < totalChunks; chunkNumber++)
             {
-                chunkCoordinates[chunkNumber] = Calculations.MultipleStepsMove(chunkCoordinates[chunkNumber - 1], commandSegments[chunkNumber]);
+                chunkCoordinates[chunkNumber] = Calculations.MultipleStepsMove(chunkCoordinates[chunkNumber - 1], commandSegments[chunkNumber - 1]);
             }
 
             return chunkCoordinates;
@@ -47,7 +47,7 @@ namespace CleaningRobotService.Commands
             return Enumerable.Range(0, totalChunks).Select(chunkNumber =>
             {
                 int fromIndex = chunkNumber * chunkSize;
-                int count = totalCommands < chunkSize ? totalCommands : chunkSize;
+                int count = (totalCommands - fromIndex) < chunkSize ? totalCommands - fromIndex : chunkSize;
                 return new ArraySegment<(Direction direction, int steps)>(command.MoveCommands, fromIndex, count);
             }).ToArray();
         }
