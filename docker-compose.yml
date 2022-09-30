@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  cleaningrobotservice.api:
+    image: ${DOCKER_REGISTRY-}cleaningrobotserviceapi
+    build:
+      context: .
+      dockerfile: CleaningRobotService/Dockerfile

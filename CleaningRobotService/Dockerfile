@@ -2,14 +2,16 @@
 
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 WORKDIR /app
-EXPOSE 80
+EXPOSE 5000
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["CleaningRobotService/CleaningRobotService.Api.csproj", "CleaningRobotService/"]
 COPY ["CleaningRobotService.Commands/CleaningRobotService.Commands.csproj", "CleaningRobotService.Commands/"]
 COPY ["CleaningRobotService.Infrastructure/CleaningRobotService.Infrastructure.csproj", "CleaningRobotService.Infrastructure/"]
+COPY ["CleaningRobotService.DataModel/CleaningRobotService.DataModel.csproj", "CleaningRobotService.DataModel/"]
 COPY ["CleaningRobotService.Model/CleaningRobotService.ApiModel.csproj", "CleaningRobotService.Model/"]
+COPY ["CleaningRobotService.Queries/CleaningRobotService.Queries.csproj", "CleaningRobotService.Queries/"]
 RUN dotnet restore "CleaningRobotService/CleaningRobotService.Api.csproj"
 COPY . .
 WORKDIR "/src/CleaningRobotService"

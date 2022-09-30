@@ -1,0 +1,9 @@
+version: '3.4'
+
+services:
+  cleaningrobotservice.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__default=someConnectionHere
+    ports:
+      - "5000"
