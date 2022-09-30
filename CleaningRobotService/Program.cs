@@ -14,12 +14,8 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseAuthorization();
 
@@ -29,11 +25,11 @@ app.Run();
 
 static void RegisterServices(WebApplicationBuilder builder)
 {
-
     builder.Services.AddDbContext<CleaningRobotDatabaseContext>(options =>
     {
-        options.UseNpgsql(@"Server=localhost;Port=5432;Database=postgres;User ID=postgres;Password=admin");
+        options.UseNpgsql(builder.Configuration.GetConnectionString("default"));
     });
+
 
     builder.Services.AddScoped<ICommandHandler<UniqueCoordinatesVisitedCommand, int>, UniqueCoordinatesVisitedCommandHandler>();
     builder.Services.AddScoped<IQueryHandler<GetUniqueCoordinatesExecutionsQuery, Execution>, UniqueCoordinatesExecutionsQueryHandler>();
