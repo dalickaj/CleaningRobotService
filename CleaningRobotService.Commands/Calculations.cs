@@ -21,7 +21,7 @@ namespace CleaningRobotService.Commands
                     total += alreadyVisited[i, j].Count;
                 }
             }
-
+            // comment heres
             return total;
         }
 
